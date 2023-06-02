@@ -18,7 +18,7 @@ public class Empleado
     public char Genero { get; set;} 
     public DateTime FechaIngreso { get; set;}
     public double SueldoBasico { get; set;}
-    public float Sueldo { get; set;}
+    public Cargos Cargo { get; set; }
 
     public int Antiguedad()
         {
@@ -46,4 +46,44 @@ public class Empleado
         }
         return aniosRestantes;
     }
+
+    public double Salario() 
+    {
+        double salario, Adicional;
+        int antiguedad = Antiguedad();
+
+        if (antiguedad <= 20)
+        {
+            Adicional = SueldoBasico*(antiguedad /100);    
+        } else
+        {
+            Adicional = SueldoBasico * 0.25;
+        }
+
+        if (Cargo == Cargos.Especialista || Cargo == Cargos.Ingeniero)
+        {
+            Adicional += Adicional * 0.5;
+        }
+
+        if (EstadoCivil == 'S')
+        {
+            Adicional += 15000;
+        }
+        
+        salario = SueldoBasico + Adicional;
+        return salario;
+    }
+    //constructor
+    public Empleado(string nombre, string apellido, DateTime fechaNacimiento, char estadoCivil, char genero, DateTime fechaIngreso, double sueldoBasico, Cargos cargo)
+    {
+        Nombre = nombre;
+        Apellido = apellido;
+        FechaNacimiento = fechaNacimiento;
+        EstadoCivil = estadoCivil;
+        Genero = genero;
+        FechaIngreso = fechaIngreso;
+        SueldoBasico = sueldoBasico;
+        Cargo = cargo;
+    }
+
 }
