@@ -5,7 +5,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>tl1_tp7_2023_maurijs</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable> 
   </PropertyGroup>
 
 </Project>
